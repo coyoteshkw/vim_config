@@ -14,7 +14,16 @@ Reload the file or restart Vim, then you can,
 - :PlugDiff to review the changes from the last update
 - :PlugClean to remove plugins no longer in the list
 
+`gl`开启背景透明
+
+`<c-i>`跳转下一个插入点
+
+`CocList marketplace`安装新的插件
+
+## 插件列表
+
 ```vimrc
+call plug#begin()
 Plug 'junegunn/vim-plug' " 加载文档
 Plug 'tpope/vim-vinegar' " 给newtr目录管理添加- 键等小功能，如果安装Nerdtree会默认使用那个
 Plug 'ctrlpvim/ctrlp.vim' " 搜索当前目录的文件、最近修改的文件、buffer
@@ -29,5 +38,6 @@ Plug 'mhinz/vim-startify' " 美化启动界面
 Plug 'neoclide/coc.nvim', {'branch': 'release'} " 语法补全
 Plug 'christoomey/vim-tmux-navigator'
 Plug 'tpope/vim-commentary' " 注释 gcc
+call plug#end()
 ```
 

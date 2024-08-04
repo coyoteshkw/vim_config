@@ -8,6 +8,9 @@ set ttimeoutlen=1
 set ttyfast
 set termguicolors " 24位真彩色(比256色还大)
 set laststatus=2
+" 高亮当前行
+" set cursorline
+" highlight CursorLine cterm=NONE ctermbg=darkgray guibg=lightgrey
 " 另一种方法
 " let &t_SI = "\<Esc>]50;CursorShape=1\x7"
 " let &t_SR = "\<Esc>]50;CursorShape=2\x7"
@@ -41,7 +44,6 @@ set ruler
 set hlsearch
 set incsearch " dynamically as they are typed.
 set belloff=all " so annoying
-
 
 
 " ==================== keyboard mapping ==================== 
@@ -108,7 +110,6 @@ Plug 'mhinz/vim-startify' " 美化启动界面
 Plug 'neoclide/coc.nvim', {'branch': 'release'} " 语法补全
 Plug 'christoomey/vim-tmux-navigator'
 Plug 'tpope/vim-commentary' " 注释 gcc
-" Plug 'OmniSharp/omnisharp-vim' " c#
 
 " ==> colorscheme
 Plug 'morhetz/gruvbox'
@@ -119,8 +120,23 @@ call plug#end()
 " ==> colorscheme
 
 " set background=dark "light
-colorscheme catppuccin-frappe " catppuccin-latte, catppuccin-frappe, catppuccin-macchiato, catppuccin-mocha
+colorscheme catppuccin-mocha " catppuccin-latte, catppuccin-frappe, catppuccin-macchiato, catppuccin-mocha
 " seoul256 config info:https://github.com/junegunn/seoul256.vim
+
+" hi Normal guibg=NONE ctermbg=NONE
+" let t:is_transparent = 0
+" Toggle transparent background
+let t:is_transparent = 0
+function! Toggle_transparent()
+    if t:is_transparent == 0
+        hi Normal guibg=NONE ctermbg=NONE
+        let t:is_transparent = 1
+    else
+"        set background=dark
+        let t:is_tranparent = 0
+    endif
+endfunction
+nnoremap gl : call Toggle_transparent()<CR>
 
 " ==> ctrlp
 let g:ctrlp_show_hidden = 0 " ctrl插件允许搜索隐藏文件
